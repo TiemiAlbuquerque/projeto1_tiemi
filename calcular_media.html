@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 2 - Média</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; }
+        input { padding: 5px; margin-bottom: 10px; }
+        .resultado { 
+            margin-top: 20px; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            background-color: #f9f9f9; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Ex 2: Cálculo de Notas</h2>
+
+    <label>Nota 1:</label><br>
+    <input type="number" id="nota1" placeholder="Digite a 1ª nota"><br>
+
+    <label>Nota 2:</label><br>
+    <input type="number" id="nota2" placeholder="Digite a 2ª nota"><br>
+
+    <button onclick="calcular()">Ver Resultado</button>
+
+    <div id="saida" class="resultado">O resultado aparecerá aqui...</div>
+
+    <script>
+        function calcular() {
+            // 1. Pegar valores (vem como Texto/String)
+            let n1 = document.getElementById("nota1").value;
+            let n2 = document.getElementById("nota2").value;
+            let divSaida = document.getElementById("saida");
+
+            // 2. Converter para Número Real (Float)
+            let valor1 = parseFloat(n1);
+            let valor2 = parseFloat(n2);
+
+            // Verifica se os campos estão vazios ou inválidos
+            if (isNaN(valor1) || isNaN(valor2)) {
+                alert("Por favor, digite números válidos.");
+                return;
+            }
+
+            // 3. Calcular Média
+            let media = (valor1 + valor2) / 2;
+
+            // 4. Lógica de Aprovação
+            if (media >= 7) {
+                divSaida.style.color = "green";
+                divSaida.innerHTML = `Média ${media}: <strong>APROVADO!</strong>`;
+            } else {
+                divSaida.style.color = "red";
+                divSaida.innerHTML = `Média ${media}: <strong>REPROVADO.</strong>`;
+            }
+        }
+    </script>
+</body>
+</html>
